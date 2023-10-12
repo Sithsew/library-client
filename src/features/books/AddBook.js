@@ -20,8 +20,8 @@ const AddBook = () => {
     isbn: "",
     description: "",
   });
-  const [addBookMutation, { isLoading, isError, error }] = useAddBookMutation();
-  const { data: authors, isAuthorsLoading } = useGetAuthorsQuery();
+  const [addBookMutation, { isError, error }] = useAddBookMutation();
+  const { data: authors } = useGetAuthorsQuery();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
