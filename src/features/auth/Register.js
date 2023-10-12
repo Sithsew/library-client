@@ -16,12 +16,13 @@ const ROLES_LIST = {
   User: 2001,
 };
 
-const UserForm = () => {
+const Register = () => {
   const [userData, setUserData] = useState({
     user: "",
     pwd: "",
-    roles: ROLES_LIST.Admin,
+    roles: Object.keys(ROLES_LIST)[1],
   });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -47,6 +48,8 @@ const UserForm = () => {
 
   return (
     <div className="register">
+      <h1>Register</h1>
+
       <form onSubmit={handleRegistration}>
         <TextField
           label="Username"
@@ -72,18 +75,18 @@ const UserForm = () => {
         />
 
         <FormControl fullWidth variant="outlined" margin="normal">
-          <InputLabel id="roles-label">Roles</InputLabel>
+          <InputLabel id="role-label">Select Role</InputLabel>
           <Select
-            label="Roles"
-            labelId="roles-label"
-            name="roles"
+            labelId="role-label"
+            id="role-select"
             value={userData.roles}
+            label="Select Role"
             onChange={(e) =>
-              handleChange({ target: { name: "roles", value: e.target.value } })
+              setUserData({ ...userData, roles: e.target.value })
             }
           >
             {Object.entries(ROLES_LIST).map(([role, value]) => (
-              <MenuItem key={value} value={{ [role]: value }}>
+              <MenuItem key={value} value={role}>
                 {role}
               </MenuItem>
             ))}
@@ -98,4 +101,4 @@ const UserForm = () => {
   );
 };
 
-export default UserForm;
+export default Register;

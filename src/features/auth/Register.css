@@ -8,5 +8,9 @@
 
   display: block;
   margin: 7% auto;
-  height: 300px;
+  height: 400px;
+}
+
+.register h1 {
+  text-align: center;
 }
