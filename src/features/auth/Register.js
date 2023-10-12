@@ -37,8 +37,12 @@ const Register = () => {
   const handleRegistration = async (e) => {
     try {
       e.preventDefault();
-
-      const newUser = await register(userData).unwrap();
+      const ROLES_LIST = {
+        Admin: 5051,
+        User: 2001,
+      };
+      const user = {...userData, roles: { [userData.roles]: ROLES_LIST[userData.roles]  }}
+      const newUser = await register(user).unwrap();
       console.log("New User Registered:", newUser);
       navigate("/login");
     } catch (error) {

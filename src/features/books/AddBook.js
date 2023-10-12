@@ -8,6 +8,7 @@ import {
   Paper,
   Select,
   MenuItem,
+  InputLabel,
 } from "@mui/material";
 import { useAddBookMutation } from "./booksApiSlice";
 import { useGetAuthorsQuery } from "./authorsApiSlice";
@@ -64,8 +65,9 @@ const AddBook = () => {
               />
             </Grid>
             <Grid item xs={12}>
+              <InputLabel id="role-label">Select Role</InputLabel>
               <Select
-                label="Author"
+                labelId="role-label"
                 placeholder="Select Author"
                 name="authorId"
                 fullWidth
